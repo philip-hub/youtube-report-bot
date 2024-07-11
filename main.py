@@ -67,7 +67,7 @@ def report_comment(comment_element):
 
 def check_and_report_comments(url):
     driver.get(url)
-    time.sleep(10)  # Wait for the video and comments to load
+    time.sleep(60)  # Wait for the video and comments to load
     last_height = driver.execute_script("return document.documentElement.scrollHeight")
     
     reported_count = 0  # Counter for reported comments
