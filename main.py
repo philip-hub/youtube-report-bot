@@ -15,6 +15,10 @@ with open('credentials.txt', 'r') as file:
 with open('keywords.txt', 'r') as file:
     keywords = file.read().splitlines()
 
+# Load video URLs
+with open('video_urls.txt', 'r') as file:
+    video_urls = [line.strip() for line in file.readlines()]
+
 # Load ChromeDriver path
 with open('chromedriverpath.txt', 'r') as file:
     chromedriver_path = file.readline().strip()
@@ -88,14 +92,19 @@ def check_and_report_comments(url):
             break  # Break the loop if no more comments are loaded
         last_height = new_height
 
-    # Write the reported count to a text file
-    with open('count.txt', 'w') as count_file:
-        count_file.write(f"Number of reported comments: {reported_count}")
+    return reported_count
 
 if __name__ == "__main__":
-    video_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-
     login_youtube(email, password)
-    check_and_report_comments(video_url)
+    
+    total_reported_count = 0
+    for video_url in video_urls:
+        reported_count = check_and_report_comments(video_url)
+        total_reported_count += reported_count
+        print(f"Reported {reported_count} comments for video: {video_url}")
+
+    # Write the total reported count to a text file
+    with open('count.txt', 'w') as count_file:
+        count_file.write(f"Total number of reported comments: {total_reported_count}")
 
     driver.quit()
