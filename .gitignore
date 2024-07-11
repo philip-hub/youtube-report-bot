@@ -1,9 +1,15 @@
-# Ignore the virtual environment folder
-myenv/
-
 # Ignore credentials and keywords files
 credentials.txt
 keywords.txt
+
+# Ignore ChromeDriver path file
+chromedriverpath.txt
+
+# Ignore ChromeDriver directory
+/chromedriver-mac-x64
+
+# Ignore the virtual environment folder
+myenv/
 
 # Ignore Python cache files
 __pycache__/
