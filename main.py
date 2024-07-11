@@ -3,7 +3,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 # Load credentials
@@ -18,8 +17,8 @@ with open('keywords.txt', 'r') as file:
 options = Options()
 options.add_argument("--disable-blink-features=AutomationControlled")
 
-# Initialize the WebDriver
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+# Initialize the WebDriver using the manually downloaded ChromeDriver
+driver = webdriver.Chrome(service=Service('/usr/local/bin/chromedriver'), options=options)
 
 def login_youtube(email, password):
     driver.get('https://accounts.google.com/signin/v2/identifier?service=youtube')

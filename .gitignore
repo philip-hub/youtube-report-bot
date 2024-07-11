@@ -1,3 +1,6 @@
+# Ignore the virtual environment folder
+myenv/
+
 # Ignore credentials and keywords files
 credentials.txt
 keywords.txt
