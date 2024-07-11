@@ -1,0 +1,16 @@
+# Ignore credentials and keywords files
+credentials.txt
+keywords.txt
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment files
+.env
+
+# Ignore logs
+*.log
+
+# Ignore system files
+.DS_Store
