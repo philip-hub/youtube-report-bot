@@ -13,12 +13,16 @@ with open('credentials.txt', 'r') as file:
 with open('keywords.txt', 'r') as file:
     keywords = file.read().splitlines()
 
+# Load ChromeDriver path
+with open('chromedriverpath.txt', 'r') as file:
+    chromedriver_path = file.readline().strip()
+
 # Setup Chrome options
 options = Options()
 options.add_argument("--disable-blink-features=AutomationControlled")
 
-# Initialize the WebDriver using the manually downloaded ChromeDriver
-driver = webdriver.Chrome(service=Service('/usr/local/bin/chromedriver'), options=options)
+# Initialize the WebDriver using the ChromeDriver path from the text file
+driver = webdriver.Chrome(service=Service(chromedriver_path), options=options)
 
 def login_youtube(email, password):
     driver.get('https://accounts.google.com/signin/v2/identifier?service=youtube')
